@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e85d26" />
+    <meta name="description" content="Software Test Engineer Portfolio — QA Automation, Manual Testing, API Testing" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Your Name | Software Test Engineer" />
+    <meta property="og:description" content="Passionate QA Engineer delivering quality software through rigorous testing." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Your Name | Software Test Engineer" />
+    <meta name="twitter:description" content="QA Automation Expert — Selenium, Cypress, Postman" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Google Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>Ashish Soni | Software Test Engineer</title>
+
+    <style>
+      /* Prevent flash of unstyled content on theme load */
+      html { background: #0d0c0a; }
+      html[data-theme="light"] { background: #f5f4f0; }
+
+      #root-loader {
+        position: fixed;
+        inset: 0;
+        background: #0d0c0a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.4s ease;
+      }
+      .loader-logo {
+        font-family: monospace;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #f07030;
+        animation: pulse 1.2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+    </style>
+
+    <script>
+      // Apply saved theme before React loads — avoids flash
+      (function() {
+        var theme = localStorage.getItem('portfolio-theme');
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        var loader = document.getElementById('root-loader');
+        if (loader) {
+          loader.style.background = theme === 'dark' ? '#0d0c0a' : '#f5f4f0';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- Loading screen -->
+    <div id="root-loader">
+      <span class="loader-logo">&lt;QA/&gt;</span>
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+      // Hide loader once React mounts
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var loader = document.getElementById('root-loader');
+          if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(function() { loader.remove(); }, 400);
+          }
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
